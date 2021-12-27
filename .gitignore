@@ -1,0 +1,64 @@
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Cocoapods
+Pods/
+
+# Carthage
+Carthage/
+
+# node.js
+#
+node_modules/
+npm-debug.log
+
+# Android
+local.properties
+build.properties
+airshipconfig.properties
+.gradle
+.idea
+google-services.json
+gradle/
+
+# iOS
+AirshipConfig.plist
+
+# Docs
+docs/
+
+# Typescript
+lib/
+
+# Yarn
+yarn-error.log
+yarn.lock
+
+# Etc
+*.orig
+*.swo
+*.swp
+*.iml
+
+.jest/*

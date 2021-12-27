@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.snapchat.kit.sdk.reactnative">
+
+    <application>
+
+        <!-- 
+            Metadata flag that we pass into the Android SDK to record that the request 
+            is from React Native plugin.
+        -->
+        <meta-data
+            android:name="com.snapchat.kit.sdk.isFromReactNativePlugin"
+            android:value="true" />
+
+    </application>
+
+</manifest>
