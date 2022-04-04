@@ -31,7 +31,7 @@
     SCSDKSnapSticker *snapSticker = [[SCSDKSnapSticker alloc] initWithStickerImage:stickerImage];
     
     if (stickerMap[@"width"]) {
-        snapSticker.width = [[stickerMap valueForKey:@"width"] floatValue];
+        snapSticker.width = [[stickerMap valueForKey:@"width"] floatValue]; 
     }
     
     if (stickerMap[@"height"]) {
@@ -59,14 +59,14 @@ RCT_EXPORT_METHOD(sharePhoto:(nonnull NSDictionary *)photoContent
                   sharePhotoResolver:(RCTPromiseResolveBlock)resolve
                   sharePhotoRejector:(RCTPromiseRejectBlock)reject)
 {
-    NSData *imageData = nil;
+    NSData *imageData = nil; 
     if (photoContent[@"content"]) {
         NSDictionary *contentDict = photoContent[@"content"];
         
         if (contentDict[@"raw"]) {
             imageData = [[NSData alloc] initWithBase64EncodedString:contentDict[@"raw"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         } else {
-            NSURL *url = [NSURL URLWithString:contentDict[@"uri"]];
+            NSURL *url = [NSURL URLWithString:contentDict[@"uri"]]; 
             imageData = [NSData dataWithContentsOfURL:url];
         }
     }
@@ -91,6 +91,7 @@ RCT_EXPORT_METHOD(sharePhoto:(nonnull NSDictionary *)photoContent
             }
         }
         
+        // dispatch to main queue
         dispatch_async(dispatch_get_main_queue(), ^{
             [self->_scSdkSnapApi startSendingContent:photoSnapContent completionHandler:^(NSError *error) {
 

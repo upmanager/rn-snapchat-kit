@@ -137,13 +137,11 @@ class LoginKitNativeModule(reactContext: ReactApplicationContext) :
                 if (accessToken != null) {
                     promise.resolve(accessToken)
                 } else {
-                    // TODO(Error_Types): Define specific Error Types rather than throwing generic free flow errors
                     promise.reject("error", RefreshAccessTokenResultError.NO_REFRESH_TOKEN.name)
                 }
             }
 
             override fun onRefreshAccessTokenFailure(accessTokenResultError: RefreshAccessTokenResultError?) {
-                // TODO(Error_Types): Define specific Error Types rather than throwing generic free flow errors
                 promise.reject("error", accessTokenResultError?.name)
             }
         }
@@ -205,7 +203,6 @@ class LoginKitNativeModule(reactContext: ReactApplicationContext) :
 
             override fun onFailure(isNetworkError: Boolean, statusCode: Int) {
                 val errorResponse = createMap()
-                // TODO(Error_Types): Define specific Error Types rather than throwing generic free flow errors
                 errorResponse.putBoolean(IS_NETWORK_ERROR, isNetworkError)
                 errorResponse.putInt(STATUS_CODE, statusCode)
                 promise.reject("error", errorResponse)
@@ -222,14 +219,16 @@ class LoginKitNativeModule(reactContext: ReactApplicationContext) :
 
     @ReactMethod
     fun verify(phoneNumber: String, countryCode: String, promise: Promise) {
-        // TODO(Error_Types): Define specific Error Types rather than throwing generic free flow errors
         promise.reject("error", "VERIFY_NOT_SUPPORTED")
     }
 
     @ReactMethod
     fun verifyAndLogin(phoneNumber: String, countryCode: String, promise: Promise) {
-        // TODO(Error_Types): Define specific Error Types rather than throwing generic free flow errors
-        promise.reject("error", "VERIFY_NOT_SUPPORTED")
+        try {
+            promise.reject("error", "VERIFY_NOT_SUPPORTED")
+        } catch (Exception e) {
+            Log.d(e.getMessage())
+        }
     }
 
     // endregion
